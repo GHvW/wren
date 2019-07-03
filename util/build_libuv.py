@@ -26,7 +26,7 @@ def build_libuv_mac():
   run([
     "xcodebuild",
     # Build a 32-bit + 64-bit universal binary:
-    "ARCHS=i386 x86_64", "ONLY_ACTIVE_ARCH=NO",
+    "ARCHS=x86_64", "ONLY_ACTIVE_ARCH=NO",
     "BUILD_DIR=out",
     "-project", LIB_UV_DIR + "/uv.xcodeproj",
     "-configuration", "Release",
@@ -47,7 +47,7 @@ def build_libuv_linux(arch):
 
 
 def build_libuv_windows(arch):
-  args = ["cmd", "/c", "vcbuild.bat", "release"]
+  args = ["cmd", "/c", "vcbuild.bat", "release", "vs2017"]
   if arch == "-32":
     args.append("x86")
   elif arch == "-64":
